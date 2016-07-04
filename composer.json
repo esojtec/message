@@ -1,0 +1,21 @@
+{
+    "name": "esojtec/message",
+    "description": "Libreria crear mensajes",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jose Manuel Chavez Rodriguez",
+            "email": "esojtec@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload":{
+        "psr-4": {"Esojtec\\Messages":"src/"}
+    }
+}
