@@ -14,9 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9"
-    },
-    "autoload": {
-        "psr-4": {"Esojtec\\Messages\\": "src/"}
+        "php": ">=5.5.9",
+        "esojtec/messages": "dev-master"
     }
 }
