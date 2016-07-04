@@ -2,6 +2,7 @@
     "name": "esojtec/message",
     "description": "Libreria crear mensajes",
     "type": "Library",
+    "version": "0.0.1",
     "require-dev": {
         "phpunit/phpunit": "~4.0"
     },
