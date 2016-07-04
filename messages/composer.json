@@ -3,7 +3,7 @@
     "description": "Libreria crear mensajes",
     "type": "library",
     "require-dev": {
-        "phpunit/phpunit": "4.0.*"
+        "phpunit/phpunit": "~4.0"
     },
     "license": "MIT",
     "authors": [
