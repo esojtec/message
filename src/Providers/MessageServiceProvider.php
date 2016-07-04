@@ -10,7 +10,7 @@ class MessageServiceProvider extends ServiceProvider {
 	function register() {
 
 		$this->app->bind('message', function() {
-			return new \Esojtec\Messages\Libraries\Message;
+			return [\Esojtec\Messages\Libraries\Message,Illuminate\Session\Storage];
 		});
 
 		$this->app->boot(function() {
