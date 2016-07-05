@@ -2,8 +2,11 @@
 
 namespace Esojtec\Messages\Libraries;
 
+use 
+
 class Message {
 
+	var $flash = "esojtec.messages"
 	var $_messages = [];
 
 	function __Construct(){
@@ -11,10 +14,11 @@ class Message {
 	}
 
 	function message($message, $type = 'info') {
-		$this->_messages[] = ['message' => $message, 'type' => $type];
+
+		\Session::put($flash, ['message' => $message, 'type' => $type]);
 	}
 
 	function render() {
-		return $this->_messages;
+		return \Session::get($flash);
 	}
 }
