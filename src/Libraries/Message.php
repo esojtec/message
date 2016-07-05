@@ -2,23 +2,41 @@
 
 namespace Esojtec\Messages\Libraries;
 
-use 
+use Illuminate\Session\Store;
 
 class Message {
 
-	var $flash = "esojtec.messages"
-	var $_messages = [];
+	var $_flash = "esojtec.messages"
 
-	function __Construct(){
+    var $_session = [];
 
+	function __Construct(Store $session){
+            $this->_session = $session;
 	}
 
 	function message($message, $type = 'info') {
 
-		\Session::put($flash, ['message' => $message, 'type' => $type]);
+		$this->_session->put($this->_flash,['message' => $message, 'type' => $type]);
+
 	}
 
+    function success($message){
+        $this->message($message, 'success');
+    }
+    
+    function error($message){
+        $this->message($message, 'danger');
+    }
+    
+    function warning($message){
+        $this->message($message, 'warning');
+    }
+    
+    function info(){
+        $this->message($message, 'info');
+    }
+        
 	function render() {
-		return \Session::get($flash);
+		return $this->_session->get($this->_flash);
 	}
 }
