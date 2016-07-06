@@ -10,11 +10,12 @@ class Message {
 
     function __Construct(Store $session){
         $this->_session = $session;
+        $this->_session->remove($this->_flash);
     }
 
     function message($message, $type = 'info') {
 
-            $this->_session->put($this->_flash,['message' => $message, 'type' => $type]);
+        $this->_session->push($this->_flash,['message' => $message, 'type' => $type]);
 
     }
 
@@ -30,11 +31,7 @@ class Message {
         $this->message($message, 'warning');
     }
     
-    function info(){
+    function info($message){
         $this->message($message, 'info');
     }
-        
-	function render() {
-		return $this->_session->get($this->_flash);
-	}
 }

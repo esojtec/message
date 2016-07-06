@@ -11,11 +11,11 @@ class MessageServiceProvider extends ServiceProvider {
 	function register() {
 
 		$this->app->bind(
-                        '\Illuminate\Session\Storage'
+                        'Illuminate\Session\Storage'
 		);
                 
                 $this->app->singleton('message', function(){
-                    return new \Esojtec\Messages\Libraries\Message;
+                    return $this->app->make('Esojtec\Messages\Libraries\Message');
                 });
 
 		$this->app->boot(function() {
@@ -23,4 +23,12 @@ class MessageServiceProvider extends ServiceProvider {
 			$loader->alias('Message', 'Esojtec\Messages\Facades\MessageFacade');
 		});
 	}
+        
+        function boot(){
+            $this->loadViewsFrom(__DIR__ .'\..\views', 'message');
+            
+            $this->publishes([
+                __DIR__ . '\..\views' => base_path('resources/views/vendor/messages')
+            ]);
+        }
 }
