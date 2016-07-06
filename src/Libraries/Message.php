@@ -6,19 +6,17 @@ use Illuminate\Session\Store;
 
 class Message {
 
-	var $_flash = "esojtec.messages"
+    var $_flash = "esojtec.messages";
 
-    var $_session = [];
+    function __Construct(Store $session){
+        $this->_session = $session;
+    }
 
-	function __Construct(Store $session){
-            $this->_session = $session;
-	}
+    function message($message, $type = 'info') {
 
-	function message($message, $type = 'info') {
+            $this->_session->put($this->_flash,['message' => $message, 'type' => $type]);
 
-		$this->_session->put($this->_flash,['message' => $message, 'type' => $type]);
-
-	}
+    }
 
     function success($message){
         $this->message($message, 'success');
