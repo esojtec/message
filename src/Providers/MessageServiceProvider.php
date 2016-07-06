@@ -4,7 +4,6 @@ namespace Esojtec\Messages\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\AliasLoader;
-use Illuminate\Session\Storage;
 
 class MessageServiceProvider extends ServiceProvider {
 
@@ -17,11 +16,6 @@ class MessageServiceProvider extends ServiceProvider {
                 $this->app->singleton('message', function(){
                     return $this->app->make('Esojtec\Messages\Libraries\Message');
                 });
-
-		$this->app->boot(function() {
-			$loader = AliasLoader::getInstance();
-			$loader->alias('Message', 'Esojtec\Messages\Facades\MessageFacade');
-		});
 	}
         
         function boot(){
